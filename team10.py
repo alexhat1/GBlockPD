@@ -26,7 +26,14 @@ def move(my_history, their_history, my_score, their_score):
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
     
-    return 'c'
+    # This player colludes on even numbered rounds (first round is round #0).
+    if len(my_history)%4 == 0:
+        if (len(their_history)!=0 and their_history[-1] == 'b'):
+            return 'b'
+        else:  
+            return 'c'
+    else:
+        return 'b'
 
     
 def test_move(my_history, their_history, my_score, their_score, result):
